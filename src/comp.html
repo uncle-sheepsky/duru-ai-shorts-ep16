@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>ep16 유입 숏폼 — 12 comp / 550f / 22.000s</title>
+<!--
+  「아낌없이 주는 두루」 유입 숏폼. 1080×1920 @25fps CFR · 550f · 22.000s(11마디).
+  BPM120 격자 = 50f/마디 → 컴프 경계가 전부 25f(반마디) 배수라 반올림 오차 0.0f.
+
+  ★연출·자산은 전부 beats16.js 에 있다. 이 파일은 **조립 + 시간축**만 한다.
+  ★화면에 뜨는 코드는 code_data.js 가 이 두 파일의 원문에서 뽑은 실제 줄이다
+    (build_codedata.py — 못 찾으면 빌드 실패. 줄번호를 지어낼 수 없다).
+
+  ★나레 배치(build_audio.py 와 같은 값 — 어긋나면 온셋이 깨진다)
+    N0 f000 → 발화 종료 2.00s = f050.0  (C1 시작 f050 · 오차  0.0f · 후킹 → 시연)
+    N1 f122 → 「여러분도」 2.14s = f175.5  (C5 시작 f175 · 오차 +0.5f)
+    N2 f290 → 「받아서」   1.40s = f325.0  (C8 시작 f325 · 오차  0.0f)
+    N3 f375 = C9 시작 · N4 f480
+  ⛔Math.random · Date.now · CSS transition/@keyframes · filter:blur 금지.
+-->
+<style>
+  @font-face { font-family:JetBrains;
+               src:url("../_fonts/JetBrainsMono.ttf") }
+  @font-face { font-family:Pretendard; font-weight:800;
+               src:url("../_fonts/Pretendard-ExtraBold.otf") }
+  @font-face { font-family:PretendardBlack; font-weight:900;
+               src:url("../_fonts/Pretendard-Black.otf") }
+  html, body { margin:0; width:100%; height:100%;
+               overflow:hidden; background:#090c0d }
+  canvas     { display:block; width:1080px; height:1920px }
+</style>
+</head>
+<body>
+<canvas id="cv" width="1080" height="1920"></canvas>
+<script src="code_data.js"></script>
+<script src="beats16.js"></script>
+<script>
+(() => {
+  const B  = window.BEATS;
+  const cv = document.getElementById('cv');
+  const g  = cv.getContext('2d', { alpha:false });
+  B.setCtx(g);
+
+  window.__total    = B.N / B.FPS;    // 22.000
+  window.__frames   = B.N;            // 550
+  window.__fps      = B.FPS;          // 25
+  window.__beats    = B.NB;           // 12 comp
+  window.__comp     = B.COMP;         // [{b0,f0,len}] — 게이트가 경계를 여기서 읽는다
+  window.__wordsSha = B.WORDS_SHA;    // R7 · 12단계 3자 대조
+  window.__codeSha  = window.CODE16.SRC_SHA;   // 화면 코드 ↔ 원문 대조
+
+  function drawFrame(frame){
+    const f = Math.max(0, Math.min(B.N - 1, Math.round(frame)));
+    // ★f0 한 프레임만 썸네일이다(◆사용자 지시). 40ms 라 재생에선 안 보이고,
+    //   쇼츠 프레임 선택에서 첫 프레임을 고르면 그대로 썸네일이 된다.
+    if (f === 0) { B.setFrame(0); B.THUMB[B.THUMB_PICK](); return; }
+    const i = B.compAt(f);
+    B.setFrame(f);                    // 자기참조 화면(C9·C10)이 읽는 글로벌 프레임
+    B.COMPFN[i](f - B.COMP[i].f0);
+    B.caption(f);
+  }
+
+  window.__seekTo = t => drawFrame(Math.max(0, Math.min(B.N / B.FPS, t)) * B.FPS);
+
+  window.__ready = false;
+  Promise.all(B.allImages().map(im => im.complete && im.naturalWidth
+      ? Promise.resolve() : new Promise(r => { im.onload = r; im.onerror = r; })))
+    .then(() => B.fontsReady())
+    .then(() => { window.__seekTo(0); window.__ready = true; });
+})();
+</script>
+</body>
+</html>

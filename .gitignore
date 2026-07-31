@@ -1,0 +1,18 @@
+# 렌더 산출물 — 저장소에 넣지 않는다(직접 돌리면 다시 생긴다)
+src/frames/
+src/_hold/
+src/_spot/
+src/_contact/
+src/thumb/
+src/*.mp4
+src/_mix_pre.wav
+src/_mix_final.wav
+src/contact_sheet*.png
+src/thumb_sheet.png
+
+# BGM 원본 45초 후보(각 17MB) — src/bgm/gen_candidates.py 의 프롬프트·시드로 재생성
+src/bgm/cand_*.wav
+src/bgm/audition_*
+
+__pycache__/
+.DS_Store

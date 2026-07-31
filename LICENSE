@@ -1,0 +1,17 @@
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+
+이 저장소의 모든 코드·스크립트·설정은 CC0 1.0 으로 공개합니다.
+복제·수정·배포·상업적 이용 전부 자유이고, 출처 표기도 필요 없습니다.
+
+전문: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+── 예외 없이 CC0 인 것 ──────────────────────────────────────────────
+  *.html  *.js  *.mjs  *.py  *.json  *.md
+  narration/nar/*.wav      (나레이션 · 본인 음성 학습 TTS 산출물)
+  bgm/splice_A.wav         (배경음악 발췌본)
+  assets/big  assets/tiny  (이 채널이 게시한 영상들에서 뽑은 프레임)
+
+── 번들 폰트는 각자의 라이선스를 따릅니다 ───────────────────────────
+  `_fonts/` 의 JetBrains Mono 와 Pretendard 는 **SIL Open Font License 1.1** 입니다.
+  각각의 전문을 `_fonts/JetBrainsMono-OFL.txt` · `_fonts/Pretendard-OFL.txt` 에 동봉했습니다.
+  이 폰트들은 CC0 대상이 아니며 OFL 조건에 따라 재배포됩니다.

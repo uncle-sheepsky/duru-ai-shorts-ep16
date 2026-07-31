@@ -1,0 +1,65 @@
+{
+ "_규격": {
+  "big": "810x1440 @12.5fps 무크롭 · 25장 = 소스 2.000s",
+  "tiny": "270x480 @12.5fps 무크롭 · 12장"
+ },
+ "_읽는법": "idx = floor(lf/2) → 25fps 실시간(on twos)",
+ "_소스": "결과물 mp4 = 실제 게시본",
+ "_실측": "2026-07-31 ffprobe — 채널 결과물 7편 전부 세로 1080×1920",
+ "works": [
+  {
+   "tag": "galaxy",
+   "src": "ep5-galaxy-renewal/hyak-ep5-galaxy.mp4",
+   "video_id": "9yYM9r2m7v4",
+   "t0": 15.0,
+   "label": "은하 충돌",
+   "n_big": 25,
+   "n_tiny": 12
+  },
+  {
+   "tag": "suika",
+   "src": "ep10-structure/hyak-ep10.mp4",
+   "video_id": "pb0A82OLX70",
+   "t0": 16.0,
+   "label": "과일 물리",
+   "n_big": 25,
+   "n_tiny": 12
+  },
+  {
+   "tag": "durufm",
+   "src": "ep13-repro/hyak_ep13_repro_durufm.mp4",
+   "video_id": "DjTz9COkTlc",
+   "t0": 2.0,
+   "label": "라디오 HUD",
+   "n_big": 25,
+   "n_tiny": 12
+  },
+  {
+   "tag": "durufm2",
+   "src": "ep13-repro/hyak_ep13_repro_durufm.mp4",
+   "video_id": "DjTz9COkTlc",
+   "t0": 10.0,
+   "label": "라디오 HUD(후킹)",
+   "n_big": 25,
+   "n_tiny": 12
+  },
+  {
+   "tag": "rhythm",
+   "src": "ep1-motion/hyak-ep1-motion.mp4",
+   "video_id": "w0syDA5-qqs",
+   "t0": 42.0,
+   "label": "리듬 게임",
+   "n_big": 25,
+   "n_tiny": 12
+  },
+  {
+   "tag": "tetris",
+   "src": "ep9-tetris/hyak-ep9.mp4",
+   "video_id": "W0jmcwhIbos",
+   "t0": 24.0,
+   "label": "T-스핀 판정",
+   "n_big": 25,
+   "n_tiny": 12
+  }
+ ]
+}
